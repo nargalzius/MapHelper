@@ -1,5 +1,8 @@
 # MapHelper "class" for GoogleMaps API v3
 
+#### [Codepen Demo](http://codepen.io/nargalzius/pen/gpKXaB)
+
+
 ### Method Quick Reference
 
 Method | Description
@@ -8,7 +11,7 @@ Method | Description
 `resize` | Resizes map
 `fit` | Adjusts center & zoom to fit all markers
 `zoom` | Sets zoom level
-`center` | Jumps to a corrdinate
+`center` | Pans/snaps map view to a coordinate
 `locate_user_gps` | Uses browser geolocation service to locate user
 `locate_find` | Resolves a long-form address to LatLng coordinates
 `locate_resolve` | Resolves LatLng coordinates to a location object
@@ -16,8 +19,10 @@ Method | Description
 `markers_show` | Show all markers
 `markers_hide` | Hide all markers
 `markers_clear` | Destroy all markers
+`infowindow_show` | Displays an infoWindow 
+`infowindow_hide` | hides the infoWindow
 `set_maptype` | Sets map type
-`get_staticmap` | Convenience function to generate static image
+`get_staticmap` | Convenience function to generate a static map image
 `get_distance` | Get distance (in miles) between two coordinates
 `get_latlng` | Sanitize input to a proper LatLng object
 `destroy` | Destroy map instance
@@ -38,14 +43,25 @@ mapType | 'road' | Sets the map to either road, satellite, terrain, or hybrid
 minZoom | 2 | Farthest view allowed
 maxZoom | 15 | Closest view allowed
 chromeless | true | Disables map controls
-address | 'New York, USA' | Default long-form address 
+address | 'New York, USA' | Default long-form address
+
+That last bit (`address`) is for an undocumented method that the map uses when you don't supply a center **and** do not allow it (`params.obtrusive = false`) to use your browser's geolocation service. It basically resolves the whatever is set to `address` to LatLng coordinates and uses that as your default center.
 
 There are _much more_ parameters you can set. The `params` object accepts practically **any** official property from the [GoogleMaps API](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). 
 
 
 ## Quick Start
 
-There are a bunch of ways to initialize the map. I'll be documenting 4 - quickest to the most thorough way. 
+Include the helper script on your document. You **do not** need to include the 
+
+```html
+<head>
+	<script src="helper_gmaps.js"></script>
+</head>
+```
+The script automatically loads the GoogleMaps API script, so there's no need to include that anywhere in your document.
+
+There are a bunch of ways to initialize the map. I'll be documenting 4; from the quickest to the most thorough. 
 
 First is just by instanciating and initializing it :) This _assumes_ you have a DOM container with an ID called "**map**"
 
@@ -60,7 +76,20 @@ The second way is to supply the `init` method with the ID of your target contain
 var myMap = new MapHelper();
 	myMap.init('map-container');
 ```
-The third is to include a callback function to avoid asynchronous loading issues.
+
+These work, they'll both show a map with no problem. But it's worth mentioning that since the GoogleMaps API is being loaded asyncrhonously, the MapHelper class actually "delays" any initialization processes behind the scenes until everything's good to go. So if all you need to do is show a map, then this is fine, as it will show it as soon as it's ready to show it. 
+
+But if you do something like:
+
+```javascript
+var myMap = new MapHelper();
+	myMap.init('map-container');
+    myMap.addMarker( {loc:'37.3303991,-122.0323321'} );
+```
+
+This may not work as you're assuming everything needed to load a marker is ready (API loaded, map element instantiated, etc) when it's not necessarily the case.
+
+Using a callback as the second parameter avoids this issue - and is the third way. 
 
 ```javascript
 
@@ -86,9 +115,7 @@ var myMap = new MapHelper();
     });
 ```
 
-Although Google [doesn't recommend](https://youtu.be/rUYs765QX-8?t=12m50s) trying to destroy the map object, for posterities sake, I've included a `destroy` method. To destroy map, you simply call `myMap.destroy()`.
-
-That's pretty much it! The only things left to do for map manipulations are the methods discussed above.
+That's pretty much it! The only things left to know about are the actual methods for map manipulation.
 
 ## Methods
 
@@ -96,21 +123,23 @@ Just like with the parameters/properties, while this helper class provides adds 
 
 The map element is assigned to the instance's `proxy` object. So in the example above, to apply say the `panBy()` method to it, it'll be `myMap.proxy.panBy(x,y);`
 
-Below is a detailed list of the methods available and arguments they can take.  
+Below is a detailed list of the methods available on the MapHelper class and arguments they can take.  
 
 ##### NOTE: An _italicized_ argument is optional
 
-#### init( _`string`_ || _`object`_, _`callback`_ )
+#### init( _`string`_ | _`object`_, _`callback`_ )
 
 Initializes the map. `string` is the DOM element container ID, `object` would be an object with compatible parameter keys and values.
 
 #### resize()
 
-Shorter way of calling `google.maps.event.trigger(myMap.proxy, 'resize')`
+Resizes map. Shorter way of calling `google.maps.event.trigger(myMap.proxy, 'resize')`
 
 #### fit( _`boolean`_ )
 
-By default it "pans" to the new view. Setting `boolean` to _true_ will snap to the updated view.
+Adjusts center & zoom to fit all markers. 
+
+Normally I prefer panning animation, but it can be quite buggy for Google's `panToBounds()`. So by default, it "snaps" to the new view. Setting `boolean` to _true_ will force the pan (but you have been warned!)
 
 #### zoom( `number` )
 
@@ -118,9 +147,11 @@ Set map zoom.
 
 #### center( _`LatLng`_, _`boolean`_, _`boolean`_ )
 
-Reposition map based on `LatLng`. If no LatLng has been provided, the map will simply "return" to it's original center (useful if you dragged away from it) as set in `myMap.params.center`
+Pans/snaps map view to a supplied coordinate.
 
-Setting first `boolean` to _true_ will overwrite `myMap.params.center`. Setting the second `boolean` to _true_ will snap to the updated view (it pans by default)
+If no LatLng has been provided, the map will simply "return" to its "original" center as set in `myMap.params.center` (useful if you've dragged the map)
+
+Setting first `boolean` to _true_ will set a new `myMap.params.center`. Setting the second `boolean` to _true_ will "snap" to the updated view (it pans by default)
 
 #### set_maptype( `string` )
 
@@ -132,7 +163,7 @@ There are four map types. Officially they are:
 
 One of these are set via the method `myMap.proxy.setMapTypeId(MAP_TYPE)`
 
-This is a convenience function where you can just use `road`, `terrain`, `satellite`, and `hybrid` as simple strings for easier application.
+This is a convenience function where you can just use `road`, `terrain`, `satellite`, and `hybrid` as simple strings (case sensitive, though) for easier application.
 
 #### locate_user_gps( _`callback`_, _`boolean`_ )
 
@@ -161,133 +192,34 @@ Adds a marker.
 The simplest form of the marker object would be something like: `{ loc: LatLng }`, so adding a marker is easy:
 
 ```javascript
-myMap.marker_add( { loc: [14.600854,120.984809] } );
+myMap.marker_add( { loc:'37.3303991,-122.0323321'} );
 ```
 
-The **kitchen sink** version of it would be
+The _"kitchen sink"_ version of it would be
 
 ```javascript
 {
 	loc: LatLng, 
 	icon: string, 
 	info: String | Object, 
-	event: { 
-		click: callback, 
-        dclick: callback, 
-        over: callback, 
-        out: callback
+	evenst: { 
+		click: Function, 
+        dclick: Function, 
+        over: Function, 
+        out: Function
     } 
 }
 ```
 
-I created it this way to simplify, but still be able to somewhat maximize customizability. If it sounds oxymoronic, let me explain.
+I created it this way to simplify, yet maximize customizability. If it sounds oxymoronic, let me explain.
 
 Just supplying the `loc` key will generate a generic marker. Supplying the `icon` will generate a marker using the icon/image you specified.
 
-Setting `info` as a string will simply populate the infoWindow (assuming it's enabled) with the text content. Setting it as an object allows for further customization (which you will have to create yourself)
+Setting `info` as a string will simply populate the infoWindow (assuming it's enabled) with the text content. Setting it as an object allows for further customization (to be discussed at length later in the `infowindow_show()` method)
 
-The `event` object is, as you guessed, an override for the four common eventlisteners. Consider the code below:
+The `events` object is, as you guessed, an override for the four common eventlisteners.
 
-```javascript
-// DEFINE MARKERS
-var markerA = { 
-	    loc: '40.730994,-74.003134', 
-	    info: 'Hello World', 
-	    icon: 'http://domain.com/custom_marker.png', 
-	    event: { 
-	    	over: globalMouseOverHandler, 
-	        out: globalMouseOutHandler
-		} 
-	};
-var markerB = { 
-		loc: '40.72501,-74.046736', 
-	    info: {
-	    	pic: 'http://domain.com/picture.png',
-            text: 'Hey, Nice Pic!'
-	    }, 
-	    event: { 
-	        click: globalClickHandler, 
-	        dclick: globalDoubleClickHandler 
-		} 
-	}
-
-// DEFINE CUSTOM EVENT HANDLERS
-var globalMouseOverHandler = function(marker) {
-	myMap.infoWindow.close();
-};
-
-var globalMouseOutHandler = function(marker) {
-	globalClickHandler(marker);
-};
-var globalClickHandler = function(marker) {
-	var container = document.createElement('div');    
-    var desc;
-	if(typeof marker.info == 'string') {
-    	desc = document.createElement('span');
-        desc.innerHTML = marker.info;
-    } else {
-    	var pic = document.createElement('img');
-            pic.src = marker.info.pic;
-        container.appendChild(pic);
-        desc = document.createElement('span');
-        desc.innerHTML = marker.info.text;
-    }
-    container.appendChild(desc);
-	myMap.infoWindow.setContent(container);
-    myMap.infoWindow.open(myMap.proxy, marker);
-};
-
-var globalDoubleClickHandler = function(marker) {
-	myMap.center(marker.position);
-};
-
-// INITIALIZE MAP
-var myMap = new MapHelper();
-	myMap.init('map-container', function(){
-    	myMap.marker_add(markerA);
-    	myMap.marker_add(markerB);
-    });
-
-```
-
-So in case you didn't follow. We basically defined two markers with different things.
-
-First marker
-1. Has a custom icon
-2. Has handlers for 2 types of interactions (mouseover and mouseout)
-3. Just has "Hello World" as the info
-
-Second marker
-1. `info` key is an object with other information stored.
-2. Has handlers for 2 interactions (click and double click)
-
-We also defined the actual handlers for the different types of functions.
-1. `globalMouseOverHandler` just calls `globalClickHandler` - which is in charge of populating and showing the infoWindow.
-2. `globalMouseOutHandler` closes the infoWindow
-3. `globalClickHandler`, as mentioned earlier is in charge of generating the content.  
-We have it create a container `div` element. Then it checks if the `info` object received is a string or not. If it is, it simply creates as `span` with the text (Hello World) and then it attaches that to the container, which then is attached to the info window.  
-If `info` is an object (second marker) it instead creates an `img` element **and** the `span` for the text. It then attaches both to the container - and ultimately to the infoWindow.
-4. The `globalDoubleClickHandler` is set to pan the map so that the marker you double clicked on, will be centered.
-
-So we then intialize our map, and add the two markers.
-
-These are the things to be expected with the block of code above:
-
-First marker
-* Will use the custom icon
-* infoWindow will show with the text "Hello World" will appear on mouseover
-* infoWindow will disappear as soon as you move your cursor away from the marker
-* Double clicking will do nothing
-* Clicking will do nothing
-
-Second Marker
-* Will use the generic GoogleMaps marker icon.
-* You can only open the infoWindow by manually clicking on the marker (mouseover does nothing)
-* infoWindow will show the custom picture and "Hey, Nice Pic!" text
-* You will have to close the infoWindow manually (mouseout does nothing)
-* Double clicking on the marker will reposition the map and center the marker you clicked on.
-
-So you can see, while there are limitations, for most cases that involved markers, this is already a pretty powerful customization tool which is pretty straightforward compared to the other ways I've seen online. The trick is really the `info` object. Cuz you basically can put **anything** in there - and ultimately, Google's `infoWindow.setContent()` method basically allows you to put any HTML content inside it. So you can use classes and style them via CSS.
+In general, it's best to check the [codepen example](http://codepen.io/nargalzius/pen/gpKXaB) listed above for a better understanding of what I mean.
 
 
 #### markers_show()
@@ -302,6 +234,72 @@ Hides all markers
 
 Deletes all markers (and listeners attached to them)
 
+#### infowindow_show(`object`, _`node`_)
+
+A method to automate the process of populating and showing an infoWindow. `object` is your marker object. The `node` is a DOM element node.
+
+If `node` is not supplied, and you _still_ call this method, it'll look for the existence of `info` data on the marker. If it exists, it'll try it's best to determine what type it is and display it. The key (pun intended) here is what you put in your marker's `info` key.
+
+So for example, you want the contents `info` to display a link to Apple Inc., you can do it in different ways:
+
+```javascript
+var marker = {
+	loc: '37.3303991,-122.0323321', 
+	info: "<a href='http://apple.com'>Apple Inc.</a>",
+	events: { 
+    	click: function(m) {
+			map.infowindow_show(m);
+		} 
+	}
+}
+myMap.marker_add(marker);
+```
+
+or
+
+```javascript
+var marker = {
+	loc: '37.3303991,-122.0323321', 
+	info: function() {
+		var a = document.createElement('a');
+			a.href = 'http://apple.com';
+			a.innerHTML = 'Apple Inc.';
+		return a;
+	},
+	events: {
+		click: function(e) {
+            map.infowindow_show(e);
+		}
+	}
+}
+myMap.marker_add(marker);
+```
+
+or
+
+```javascript
+var tObj = document.createElement('a');
+    tObj.href = 'http://apple.com';
+	tObj.innerHTML = 'Apple Inc.';
+    
+var marker = {
+	loc: '37.3303991,-122.0323321', 
+	info: tObj,
+	events: { 
+    	click: function(m) {
+			map.infowindow_show(m);
+		} 
+	}
+}
+myMap.marker_add(marker);
+```
+
+If it doesn't find an `info` key, then it'll ignore the method call altogether.
+
+#### infowindow_hide()
+
+Hides the infoWindow.
+
 #### get_staticmap( `string`, `LatLng`, `number` )
 
 Returns: **string**
@@ -310,19 +308,23 @@ A convenience feature that accesses the `https://maps.googleapis.com/maps/api/st
 
 The first parameter is the DOM element ID of the container - this is where the method will derive the height and width needed based on the container you're referencing. The second paramter obviously is the coordinates. Lastly, the number is the zoom level you wish to use for the static image.
 
-### get_distance( `LatLng`, `LatLng`, _`callback`_ )
+#### get_distance( `LatLng`, `LatLng`, _`callback`_ )
 
 Returns: **number**
 
-### get_latlng( `string` | `array` | `object` | `LatLng` )
+#### get_latlng( `string` | `array` | `object` | `LatLng` )
 
 Returns: **LatLng**
 
 This is more of a sanitation method. You can pass latitude and longitude values casted in different ways:
 
-* String: `"40.72501,-74.046736"`
-* Array: `[40.72501,-74.046736]`
-* Object Literal: `{ lat: 40.72501, lng: -74.046736 }`
+* String: `"37.3303991,-122.0323321"`
+* Array: `[37.3303991,-122.0323321]`
+* Object Literal: `{ lat: 37.3303991, lng: -122.0323321 }`
 * Google `LatLng` object.
 
-Since the GoogleMaps constructor recognizes the last two natively, only the first two are really parsed when running through the `get_latlng` method. It's worth mentioning that all the methods in this helper class that have anything to do with coordinates run the argument you supply through the `get_latlng` method. So In short, whenever you see an "input" that's of the type `LatLng`, you can assume that you can use any of the 4 types discussed above, and the class should be smart enough to sanitize it if need be.
+Since the GoogleMaps constructor recognizes the last two natively, only the first two are really "sanitized" when running through the `get_latlng` method. It's worth mentioning that all the methods in the MapHelper class that have anything to do with coordinates run any argument you supply through this method behind the scenes. In short, whenever you see an "input" that's of the type `LatLng`, you can assume that you can use any of the 4 types discussed above, since the class should be smart enough to figure it out.
+
+#### destroy()
+
+Although Google [doesn't recommend](https://youtu.be/rUYs765QX-8?t=12m50s) trying to destroy the map object, for posterities sake, I've included a `destroy` method. To destroy map, you simply call `myMap.destroy()`.

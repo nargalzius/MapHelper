@@ -236,9 +236,9 @@ MapHelper.prototype = {
 			this.proxy.setCenter(bounds.getCenter()); //or use custom center
 
 			if(bool) {
-				this.proxy.fitBounds(bounds);
-			} else {
 				this.proxy.panToBounds(bounds);
+			} else {
+				this.proxy.fitBounds(bounds);
 			}
 		}
 	},
@@ -389,6 +389,47 @@ MapHelper.prototype = {
 			});
 		}
 	},
+	infowindow_show: function(e, content) {
+
+		if(e.info)
+		{
+			var container = document.createElement('div');
+				container.className = 'infoWindow';
+
+				//trace(this.get_objecttype(e.info));
+				trace(typeof e.info);
+				
+				if(content) { 
+					container.appendChild(content);
+				} else {
+					var info;
+
+					if(this.get_objecttype(e.info) === '[object String]') {
+						info = document.createElement('div');
+						info.className = 'info default text';
+						info.innerHTML = e.info;
+					}
+					else
+					if(this.get_objecttype(e.info) === '[object Function]') {
+						info = e.info();
+					}
+					else {
+						info = e.info;	
+					}
+
+					container.appendChild(info);
+				}
+
+				this.infoWindow.setContent(container);
+				this.infoWindow.open(this.proxy, e);
+				this.trace('showing infoWindow for marker '+e.id);
+		}
+	},
+	infowindow_hide: function() {
+		this.infoWindow.setContent('');
+		this.infoWindow.close();
+		this.trace('hiding infoWindow');
+	},
 	marker_log: {
 		index: 0,
 		markers: [],
@@ -401,14 +442,16 @@ MapHelper.prototype = {
 			var loc = this.get_latlng(obj.loc);
 
 			var marker = new google.maps.Marker({
-				id: this.marker_log.arrayid,
+				id: null,
 				map: this.proxy,
-				position: loc
+				position: loc,
+				events: null,
+				info: null
 			});
 
 			if(obj.icon) {marker.setIcon(obj.icon);}
 			if(obj.info) {marker.info = obj.info;}
-			if(obj.event) {marker.event = obj.event;}
+			if(obj.events) { marker.events = obj.events; }
 			marker.id = this.marker_log.index;
 
 			if(!this.marker_log.locations) {this.marker_log.locations = [];}
@@ -419,8 +462,9 @@ MapHelper.prototype = {
 			this.marker_log.index++;
 
 			marker.setMap(this.proxy);
-
 			this.listeners_add(marker);
+
+			this.trace(marker);
 
 		}
 	},
@@ -428,25 +472,25 @@ MapHelper.prototype = {
 		var self = this;
 		// EVENT BINDINGS
 		google.maps.event.addListener(marker, 'click', function(){
-			if(this.event && this.event.click) {
-				this.event.click(this);
+			if(this.events && this.events.click) {
+				this.events.click(this);
 			} else {
-				self.trace(this.id);
+				self.trace('clicked on marker: '+this.id);
 			}
 		});
 		google.maps.event.addListener(marker, 'dblclick', function(){
-			if(this.event && this.event.dclick) {
-				this.event.dclick(this);
+			if(this.events && this.events.dclick) {
+				this.events.dclick(this);
 			}
 		});
 		google.maps.event.addListener(marker, 'mouseover', function(){
-			if(this.event && this.event.over) {
-				this.event.over(this);
+			if(this.events && this.events.over) {
+				this.events.over(this);
 			}
 		});
 		google.maps.event.addListener(marker, 'mouseout', function(){
-			if(this.event && this.event.out) {
-				this.event.out(this);
+			if(this.events && this.events.out) {
+				this.events.out(this);
 			}
 		});
 
