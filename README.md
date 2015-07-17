@@ -1,6 +1,6 @@
 # MapHelper "class" for GoogleMaps API v3
 
-#### [Codepen Demo](http://codepen.io/nargalzius/pen/gpKXaB)
+#### [Codepen Demo](http://codepen.io/nargalzius/pen/gpKXaB?editors=001)
 
 
 ### Method Quick Reference
@@ -9,7 +9,6 @@ Method | Description
 -------|------------
 `init` | Initializes the map
 `resize` | Resizes map
-`fit` | Adjusts center & zoom to fit all markers
 `zoom` | Sets zoom level
 `center` | Pans/snaps map view to a coordinate
 `locate_user_gps` | Uses browser geolocation service to locate user
@@ -19,6 +18,7 @@ Method | Description
 `markers_show` | Show all markers
 `markers_hide` | Hide all markers
 `markers_clear` | Destroy all markers
+`markers_fit` | Adjusts center & zoom to fit all markers
 `infowindow_show` | Displays an infoWindow 
 `infowindow_hide` | hides the infoWindow
 `set_maptype` | Sets map type
@@ -135,12 +135,6 @@ Initializes the map. `string` is the DOM element container ID, `object` would be
 
 Resizes map. Shorter way of calling `google.maps.event.trigger(myMap.proxy, 'resize')`
 
-#### fit( _`boolean`_ )
-
-Adjusts center & zoom to fit all markers. 
-
-Normally I prefer panning animation, but it can be quite buggy for Google's `panToBounds()`. So by default, it "snaps" to the new view. Setting `boolean` to _true_ will force the pan (but you have been warned!)
-
 #### zoom( `number` )
 
 Set map zoom.
@@ -219,8 +213,13 @@ Setting `info` as a string will simply populate the infoWindow (assuming it's en
 
 The `events` object is, as you guessed, an override for the four common eventlisteners.
 
-In general, it's best to check the [codepen example](http://codepen.io/nargalzius/pen/gpKXaB) listed above for a better understanding of what I mean.
+In general, it's best to check the [codepen example](http://codepen.io/nargalzius/pen/gpKXaB?editors=001) listed above for a better understanding of what I mean.
 
+#### markers_fit( _`boolean`_ )
+
+Adjusts center & zoom to fit all markers. 
+
+Normally I prefer panning animation, but it can be quite buggy for Google's `panToBounds()`. So by default, it "snaps" to the new view. Setting `boolean` to _true_ will force the pan (but you have been warned!)
 
 #### markers_show()
 

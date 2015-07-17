@@ -1,0 +1,14 @@
+// MIXINS
+
+=prefix($name, $argument)
+	#{$name}		: $argument
+	-webkit-#{$name}: $argument
+	-ms-#{$name}	: $argument
+	-moz-#{$name}	: $argument
+	-o-#{$name}		: $argument
+	
+=setblock($w:null, $h:null, $p: null)
+	display	: block
+	position: $p
+	width	: $w
+	height	: $h

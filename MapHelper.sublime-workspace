@@ -1,0 +1,814 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"anim",
+				"animStep"
+			],
+			[
+				"cur",
+				"currentAnim"
+			],
+			[
+				"col",
+				"colAnims"
+			],
+			[
+				"callback",
+				"callback_expand"
+			],
+			[
+				"zoo",
+				"zoom_changed"
+			],
+			[
+				"add",
+				"addListener"
+			],
+			[
+				"click",
+				"clickFunc"
+			],
+			[
+				"Gmap",
+				"GMapAPIinit"
+			],
+			[
+				"GMap",
+				"GMapAPIinit"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"YT",
+				"YTVideoPlayer"
+			],
+			[
+				"locat",
+				"locate_rigged"
+			],
+			[
+				"locate_user",
+				"locate_user_general"
+			],
+			[
+				"marker",
+				"marker_log"
+			],
+			[
+				"G",
+				"GMapAPILoaded"
+			],
+			[
+				"init",
+				"initcallback"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"module",
+				"module_locator"
+			],
+			[
+				"screen",
+				"screenSmall"
+			],
+			[
+				"map",
+				"mapView"
+			],
+			[
+				"back",
+				"backgroundImage"
+			],
+			[
+				"off",
+				"offsetWidth"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"module_",
+				"module_twitter"
+			],
+			[
+				"twe",
+				"tweets_"
+			],
+			[
+				"play",
+				"playhead"
+			],
+			[
+				"cle",
+				"clearInterval"
+			],
+			[
+				"video",
+				"video_smallcontainer_"
+			],
+			[
+				"slid",
+				"slidecontainer"
+			],
+			[
+				"modul",
+				"module_faq"
+			],
+			[
+				"element",
+				"elementtrigger"
+			],
+			[
+				"ch",
+				"chromeless"
+			],
+			[
+				"this",
+				"this"
+			],
+			[
+				"butt",
+				"buttonHandler"
+			],
+			[
+				"tog",
+				"toggleSecondaryLocator"
+			],
+			[
+				"zip",
+				"zipCenter"
+			],
+			[
+				"location",
+				"locations"
+			],
+			[
+				"curre",
+				"currentTarget"
+			],
+			[
+				"locations",
+				"locationList"
+			],
+			[
+				"twitter",
+				"twitterTweets"
+			],
+			[
+				"acti",
+				"activeButtons"
+			],
+			[
+				"act",
+				"activeButtons"
+			],
+			[
+				"current",
+				"currentTweet"
+			],
+			[
+				"offset",
+				"offsetHeight"
+			],
+			[
+				"player",
+				"playerloaded"
+			],
+			[
+				"set",
+				"setTimeout"
+			],
+			[
+				"c",
+				"container"
+			],
+			[
+				"toggle",
+				"togglePeek"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"bu",
+				"buttonHandler"
+			],
+			[
+				"getElement",
+				"getElementsByClassName"
+			],
+			[
+				"parent",
+				"parentNode"
+			],
+			[
+				"infowindow",
+				"infowindow"
+			],
+			[
+				"user_",
+				"user_gps"
+			],
+			[
+				"lat",
+				"latitude"
+			],
+			[
+				"e",
+				"event"
+			],
+			[
+				"re",
+				"replay"
+			],
+			[
+				"un",
+				"unmute"
+			],
+			[
+				"te",
+				"template"
+			],
+			[
+				"m",
+				"multiSource"
+			],
+			[
+				"reset",
+				"resetVariables"
+			],
+			[
+				"video_small",
+				"video_smallposter"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"pre",
+				"preloadArray"
+			],
+			[
+				"exit",
+				"exitOverride"
+			],
+			[
+				"gallery",
+				"galleryToggle"
+			],
+			[
+				"fb_",
+				"fb_timeline"
+			],
+			[
+				"max",
+				"maxLength"
+			],
+			[
+				"img",
+				"img_array"
+			],
+			[
+				"photo",
+				"photourl"
+			],
+			[
+				"album",
+				"albumContainer"
+			],
+			[
+				"getPhoto",
+				"getSetPhotos"
+			],
+			[
+				"col_",
+				"col_parent"
+			],
+			[
+				"is",
+				"ismobile"
+			],
+			[
+				"control",
+				"controlHandler"
+			],
+			[
+				"vi",
+				"visibility"
+			],
+			[
+				"offse",
+				"offsetWidth"
+			],
+			[
+				"appen",
+				"appendChild"
+			],
+			[
+				"appe",
+				"appendChild"
+			],
+			[
+				"scru",
+				"scrubber_bg"
+			],
+			[
+				"progress",
+				"progressbar"
+			],
+			[
+				"cont",
+				"controller"
+			],
+			[
+				"v_controls_btn_",
+				"v_controls_btn_mute"
+			],
+			[
+				"v_",
+				"v_controls_bb"
+			],
+			[
+				"v",
+				"vready"
+			],
+			[
+				"pla",
+				"playerContainer"
+			],
+			[
+				"pro",
+				"propertyType"
+			],
+			[
+				"copytxt",
+				"copytxt1"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install page",
+				"Package Control: Install Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 447.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper"
+	],
+	"file_history":
+	[
+		"/Users/nargalzius/Desktop/Work/Joystick/CodeKit Base (Studio)/src/prerequisite.js",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/src/demo/index.jade",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/preprocess/pages/index.jade",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/public_html/f/j/script.js",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/preprocess/scripts/gmaps_helper.js",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/README.MD",
+		"/Users/nargalzius/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/public_html/index.html",
+		"/Users/nargalzius/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/nargalzius/Dropbox/Development/GMaps Helper/preprocess/styles/style.sass",
+		"/Users/nargalzius/Dropbox/Development/HTML Video/src/main.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video/src/htmlvideo.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (YT)/src/main.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (YT)/src/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/css/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/scripts/modules/module_gallery.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/scripts/modules/module_video_yt.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/scripts/modules/module_video_html.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/scripts/modules/module_twitter.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/twitter.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/_clean_template.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_video_html.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_video_yt.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/video.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_twitter.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_faq.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_about.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_gallery.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/htmlvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/newsletter.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/newsletter.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/gallery.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/about.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/faq.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/public_html/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/prerequisite.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/locator.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_locator.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/module_video.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/src/bower_components/Autolinker.js/dist/Autolinker.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/public_html/module_video.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/public_html/module_twitter.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150713 - Tonix/300x600/public_html/module_locator.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (CLASS)/src/style.sass",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (CLASS)/src/main.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (CLASS)/src/htmlvideo.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (CLASS)/public_html/htmlvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20141215 - JMC/Vanilla/public_html/config.xml",
+		"/Users/nargalzius/Desktop/config.plist",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150707 - Enfamil/300x250/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150707 - Enfamil/300x600/config.js",
+		"/Volumes/EFI/EFI/CLOVER/config.plist",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x250/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x250/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/public_html/style.css",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/perle.sublime-project",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/src/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/src/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x250/src/ytvideo.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x250/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x250/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/wright.sublime-project",
+		"/Users/nargalzius/Desktop/Preferences.sublime-settings.txt",
+		"/Users/nargalzius/Desktop/Preferences.sublime-settings",
+		"/Users/nargalzius/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/src/prerequisite.js",
+		"/Users/nargalzius/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/nargalzius/Library/Application Support/Sublime Text 3/Packages/User/SoDaReloaded.sublime-theme",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/728x90/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150701 - Perle/300x600/src/prerequisite.js",
+		"/Users/nargalzius/Downloads/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/public_html/config.js",
+		"/Users/nargalzius/Dropbox/Development/HTML Video (YT)/src/index.jade",
+		"/Volumes/00/Sites/nargalzius.com/public_html/f/p/feed/twitter.php",
+		"/Volumes/00/Sites/nargalzius.com/public_html/f/p/feed/soundcloud.php",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600 (dynamic)/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600 (dynamic)/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250 (dynamic)/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250 (dynamic)/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250 (dynamic)/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600 (dynamic)/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/style.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/public_html/config.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/gmaps_helper.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/gmaps_helper.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600 (dynamic)/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250 (dynamic)/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/public_html/main.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90 (dynamic)/public_html/style.css",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/prerequisite.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/prerequisite.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/public_html/prerequisite.js",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/global.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x250/src/global.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/728x90/src/global.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/index.jade",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/fonts.sass",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/src/fonts.css",
+		"/Users/nargalzius/Desktop/Work/Joystick/20150615 - Wright/300x600/public_html/index.html"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"stop",
+			"passive",
+			"doAnims",
+			"hidden",
+			"isExpanded",
+			"zindex",
+			"z-index",
+			"fit",
+			"fit(",
+			"trace",
+			"center",
+			"typeof",
+			"setContent",
+			"infowindow",
+			"{ loc:",
+			"event:",
+			"get_maptype",
+			"getLatLng",
+			"getDistance",
+			"getStaticMap",
+			"MapType",
+			"mapType",
+			"get_staticmap",
+			"getStaticMap",
+			"objectType",
+			"getLatLng",
+			"getDistance",
+			"mapTYpe",
+			"CLEANUP",
+			"cleanup",
+			"locate_resolve",
+			"If an already valid",
+			"getLatLng",
+			"resize",
+			"obj2",
+			"obj1",
+			"obj3",
+			"LatLng/ar",
+			"this.man",
+			"console.log",
+			"gmapapiinit",
+			"mapT",
+			"road",
+			"resize",
+			"over: clickFunc",
+			"click: showIW",
+			"=== \"man\")",
+			"};",
+			"VideoPlayer.prototype.",
+			"};",
+			"function() {",
+			"this.",
+			"cInterval();",
+			"video ended",
+			"clearInterval",
+			"interval",
+			"loadVideoById",
+			"apiloaded",
+			"trace",
+			"YTVideoPlayer.prototype.",
+			"window['",
+			"this.debug",
+			"this.obtrusive",
+			"address",
+			"trace",
+			"getLatLong",
+			"this.ready",
+			"if(this.proxy)",
+			"this.man(	''\n			);",
+			"arrayid",
+			"markers",
+			"infowindow",
+			"trace",
+			"info:",
+			"info",
+			"p2",
+			"p1",
+			"markers_list",
+			"getLatLng",
+			"locate_user_gps",
+			"lastResort",
+			"getLatLng",
+			"this.getLatLng",
+			"setCenter",
+			"setcenter",
+			"map.",
+			"getLatlng",
+			"getlanglng",
+			"lastResort",
+			"location:",
+			"locate_",
+			"Location.",
+			"location.",
+			"Location.",
+			"location.",
+			"getmapById",
+			"gmap.",
+			"gmap.map",
+			"150",
+			"none",
+			"display",
+			"background",
+			"watermark_height",
+			"MODULE_NAME",
+			"YTAPILoaded",
+			"toggle",
+			"Eventbus",
+			"toggle",
+			"miniss",
+			"mini-slideshow",
+			"this.slideshow",
+			"mini-slideshow",
+			"mod_",
+			"gIndex",
+			"autoGallery",
+			"MODULE_NAME",
+			"canplay",
+			"uniquereplay",
+			"debug",
+			"this.trace",
+			"firsttime",
+			"startmuted",
+			"currenttime",
+			"module_video_yt",
+			"this.isplaying",
+			"load",
+			"module_video_yt",
+			"seek"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);",
+			"https://",
+			"barstrip"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "MapHelper.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main.js",
+				"728x90/src/main.js"
+			],
+			[
+				".js",
+				"728x90/public_html/config.js"
+			],
+			[
+				"config.js",
+				"300x600/public_html/config.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 322.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

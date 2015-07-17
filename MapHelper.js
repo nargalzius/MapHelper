@@ -1,11 +1,16 @@
-/*
-	HELPER CLASS FOR GMAPS.JS
-	v3.0
-	(c) 2015 Carlo Santos
+/*!
+ *	HELPER CLASS FOR GOOGLEMAPS API
+ *	https://github.com/nargalzius/MapHelper
+ *
+ *	3.2
+ *
+ *	author: Carlo J. Santos
+ *	email: carlosantos@gmail.com
+ *
+ *	Copyright (c) 2015, All Rights Reserved, www.nargalzius.com
+ */
 
-*/
-
-//var GMapAPIinit, console, google, GMapAPILoaded;
+//var GMapAPIinit, console, google, GMapAPILoaded; // FOR DEBUGGING
 
 if(typeof window.GMapAPILoaded === 'undefined')
 {
@@ -221,27 +226,6 @@ MapHelper.prototype = {
 		var self = this;
 		google.maps.event.trigger(self.proxy, 'resize');
 	},
-	fit: function(bool)
-	{
-		if(this.ready) {
-			var bounds = new google.maps.LatLngBounds();
-
-			// IF EMPTY, USE CENTER
-			if(this.marker_log.locations.length === 0) {this.marker_log.locations.push(this.params.center);}
-
-			this.marker_log.locations.forEach(function(n){
-				bounds.extend(n);
-			});
-
-			this.proxy.setCenter(bounds.getCenter()); //or use custom center
-
-			if(bool) {
-				this.proxy.panToBounds(bounds);
-			} else {
-				this.proxy.fitBounds(bounds);
-			}
-		}
-	},
 	zoom: function(num)
 	{
 		if(this.ready) {this.proxy.setZoom(num);}	
@@ -397,7 +381,7 @@ MapHelper.prototype = {
 				container.className = 'infoWindow';
 
 				//trace(this.get_objecttype(e.info));
-				trace(typeof e.info);
+				//trace(typeof e.info);
 				
 				if(content) { 
 					container.appendChild(content);
@@ -446,7 +430,8 @@ MapHelper.prototype = {
 				map: this.proxy,
 				position: loc,
 				events: null,
-				info: null
+				info: null,
+				'loc': loc 
 			});
 
 			if(obj.icon) {marker.setIcon(obj.icon);}
@@ -468,39 +453,26 @@ MapHelper.prototype = {
 
 		}
 	},
-	listeners_add: function(marker) {
-		var self = this;
-		// EVENT BINDINGS
-		google.maps.event.addListener(marker, 'click', function(){
-			if(this.events && this.events.click) {
-				this.events.click(this);
+	markers_fit: function(bool)
+	{
+		if(this.ready) {
+			var bounds = new google.maps.LatLngBounds();
+
+			// IF EMPTY, USE CENTER
+			if(this.marker_log.locations.length === 0) {this.marker_log.locations.push(this.params.center);}
+
+			this.marker_log.locations.forEach(function(n){
+				bounds.extend(n);
+			});
+
+			this.proxy.setCenter(bounds.getCenter()); //or use custom center
+
+			if(bool) {
+				this.proxy.panToBounds(bounds);
 			} else {
-				self.trace('clicked on marker: '+this.id);
+				this.proxy.fitBounds(bounds);
 			}
-		});
-		google.maps.event.addListener(marker, 'dblclick', function(){
-			if(this.events && this.events.dclick) {
-				this.events.dclick(this);
-			}
-		});
-		google.maps.event.addListener(marker, 'mouseover', function(){
-			if(this.events && this.events.over) {
-				this.events.over(this);
-			}
-		});
-		google.maps.event.addListener(marker, 'mouseout', function(){
-			if(this.events && this.events.out) {
-				this.events.out(this);
-			}
-		});
-
-
-	},
-	listeners_remove: function(marker) {
-		google.maps.event.clearListeners(marker, 'click');
-		google.maps.event.clearListeners(marker, 'dblclick');
-		google.maps.event.clearListeners(marker, 'mouseover');
-		google.maps.event.clearListeners(marker, 'mouseout');
+		}
 	},
 	markers_show: function() {
 		if(this.ready) {this.markers_set(this.proxy);}
@@ -529,6 +501,38 @@ MapHelper.prototype = {
 				});
 			}
 		}
+	},
+	listeners_add: function(marker) {
+		var self = this;
+		// EVENT BINDINGS
+		google.maps.event.addListener(marker, 'click', function(){
+			if(this.events && this.events.click) {
+				this.events.click(this);
+			} else {
+				self.trace('clicked on marker: '+this.id);
+			}
+		});
+		google.maps.event.addListener(marker, 'dblclick', function(){
+			if(this.events && this.events.dclick) {
+				this.events.dclick(this);
+			}
+		});
+		google.maps.event.addListener(marker, 'mouseover', function(){
+			if(this.events && this.events.over) {
+				this.events.over(this);
+			}
+		});
+		google.maps.event.addListener(marker, 'mouseout', function(){
+			if(this.events && this.events.out) {
+				this.events.out(this);
+			}
+		});
+	},
+	listeners_remove: function(marker) {
+		google.maps.event.clearListeners(marker, 'click');
+		google.maps.event.clearListeners(marker, 'dblclick');
+		google.maps.event.clearListeners(marker, 'mouseover');
+		google.maps.event.clearListeners(marker, 'mouseout');
 	},
 	get_distance: function(p1, p2, callback) {
 		
