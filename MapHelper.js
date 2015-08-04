@@ -2,7 +2,7 @@
  *	HELPER CLASS FOR GOOGLEMAPS API
  *	https://github.com/nargalzius/MapHelper
  *
- *	3.2
+ *	3.3
  *
  *	author: Carlo J. Santos
  *	email: carlosantos@gmail.com
@@ -17,12 +17,12 @@ if(typeof window.GMapAPILoaded === 'undefined')
 	window.GMapAPILoaded = false;
 
 	var tag = document.createElement('script');
-		tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&signed_in=true&callback=GMapAPIinit';
+		tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&signed_in=false&callback=GMapAPIinit';
 
-	setTimeout(function(){
+	//setTimeout(function(){
 	var firstScriptTag = document.getElementsByTagName('script')[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	}, 5000);
+	//}, 5000);
 
 	var GMapAPIinit = function() {
 	 	window.GMapAPILoaded = true;
@@ -242,14 +242,48 @@ MapHelper.prototype = {
 				newC = this.params.center;
 			}
 
+			// BONUSES
+			if(arg && bool) {
+				switch(this.get_objecttype(bool))
+				{
+					case "[object Object]":
+
+						if(bool.replace) this.params.center = newC;
+
+						var offsetx = 0;
+						var offsety = 0;
+
+						if(bool.x) offsetx = bool.x;
+
+						if(bool.y) offsety = bool.y * -1;
+						
+						var scale = Math.pow(2, this.proxy.getZoom());
+						var nw = new google.maps.LatLng(
+						    this.proxy.getBounds().getNorthEast().lat(),
+						    this.proxy.getBounds().getSouthWest().lng()
+						);
+
+						var worldCoordinateCenter = this.proxy.getProjection().fromLatLngToPoint(newC);
+						var pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0)
+
+						var worldCoordinateNewCenter = new google.maps.Point(
+						    worldCoordinateCenter.x - pixelOffset.x,
+						    worldCoordinateCenter.y + pixelOffset.y
+						);
+
+						newC = this.proxy.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
+
+					break;
+					default:
+						this.params.center = newC;		
+				}
+			}
+
 			if(jump) {
 				this.proxy.setCenter(newC);
 			} else {
 				this.proxy.panTo(newC);
 			}
-
-			// REPLACE CENTER
-			if(arg && bool) {this.params.center = newC;}
 		}
 	},
 	locate_user_gps: function(callback, bool)

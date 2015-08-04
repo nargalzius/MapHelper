@@ -139,13 +139,23 @@ Resizes map. Shorter way of calling `google.maps.event.trigger(myMap.proxy, 'res
 
 Set map zoom.
 
-#### center( _`LatLng`_, _`boolean`_, _`boolean`_ )
+#### center( _`LatLng`_, _`boolean || object`_, _`boolean`_ )
 
 Pans/snaps map view to a supplied coordinate.
 
 If no LatLng has been provided, the map will simply "return" to its "original" center as set in `myMap.params.center` (useful if you've dragged the map)
 
-Setting first `boolean` to _true_ will set a new `myMap.params.center`. Setting the second `boolean` to _true_ will "snap" to the updated view (it pans by default)
+Setting second argument as boolean to _true_ will set a new `myMap.params.center`. Setting it as an object will engage the "offset mode" in which you can manipulate the mapCenter with a X/Y offset :) It will look for 3 parameters (all optional:
+
+```javascript
+{ 
+	x: Number,          // Horizontal offset
+	y: Number,          // Vertical offset
+	replace: Boolean    // Equivalent to setting the second argumen to true
+}
+```
+
+Setting the third argument to _true_ will "snap" to the updated view (it pans by default)
 
 #### set_maptype( `string` )
 

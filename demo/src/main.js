@@ -35,7 +35,7 @@ function btnHandler() {
 
 // INITIALIZE MAP
 var customParams = {
-    //debug: true,
+    debug: true,
     id: 'map-canvas',
     mapType: 'road'
 };
@@ -49,7 +49,7 @@ function outHandler() {
 }
 
 function clickHandler(marker) {
-    map.center(marker.position);
+    map.center(marker.position, {x: -5, y: 6, replace: true});
 }
 
 function overHandler(marker) {
