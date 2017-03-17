@@ -33,7 +33,7 @@ if(typeof window.GMapAPILoaded === 'undefined')
 	};
 }
 
-var MapHelper = function(){};
+function MapHelper(){}
 
 MapHelper.prototype = {
 	params: {

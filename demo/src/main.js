@@ -94,7 +94,7 @@ function dClickHandler(marker) {
 }
 
 // IMAGES
-var js = 'https://joystickinteractive.github.io/i/logo.png';
+var js = 'http://joystickinteractive.com/images/js-logo-small.png';
 var mr = 'https://nargalzius.github.io/i/mapping/marker_red.png';
 var mi = 'https://nargalzius.github.io/i/mapping/marker_blue.png';
 var mg = 'https://nargalzius.github.io/i/mapping/marker_green.png';
@@ -102,7 +102,7 @@ var mb = 'https://nargalzius.github.io/i/mapping/marker_black.png';
 var mo = 'https://nargalzius.github.io/i/mapping/marker_orange.png';
 var mv = 'https://nargalzius.github.io/i/mapping/marker_purple.png';
 var w1 = 'https://farm9.staticflickr.com/8864/18230308095_f67fbdf37d_q.jpg';
-var w2 = 'https://farm8.staticflickr.com/7781/18370711672_d8cf45d927_q.jpg';
+var w2 = 'https://farm9.staticflickr.com/8864/18230308095_f67fbdf37d_q.jpg';
 var w3 = 'https://farm8.staticflickr.com/7738/17346938444_cbba2bb3d2_q.jpg';
 var w4 = 'https://farm9.staticflickr.com/8703/16970137454_3be4bdd7b0_q.jpg';
 var w5 = 'https://farm9.staticflickr.com/8196/8089886408_bcced86bb6_q.jpg';
@@ -111,7 +111,7 @@ var tempobject = document.createElement('img');
 tempobject.src = w4;
 
 // TEXT
-var h = 'Lorem ipsum dolor sit amet';
+var h = '<span style=\'font-weight:bold;\'>Lorem ipsum dolor sit amet</span>';
 var d = 'Consectetur adipiscing elit.<br/>Qui potest igitur habitare in beata<br/>vita summi mali metus? Quem<br/>Tiberina descensio festo';
 
 // MARKER
@@ -259,9 +259,10 @@ var markers = [
                 map.center(e.position);
             }
         }
-    }, {
+    }, 
+    {
         loc: '47.6391668,-122.1287076',
-        icon: 'http://res2.windows.microsoft.com/resbox/en/windows/main/eb4f0171-7cb7-428a-afcc-d93a6b84525c_33.png',
+        icon: 'https://cdn0.iconfinder.com/data/icons/shift-logotypes/32/Microsoft-128.png',
         info: {
             url: 'http://microsoft.com',
             name: 'Microsoft'
@@ -279,17 +280,18 @@ var markers = [
                 map.center(e.position);
             }
         }
-    }, {
+    }, 
+    {
         loc: '37.3303991,-122.0323321',
         icon: 'https://cdn3.iconfinder.com/data/icons/umar/Apple.png',
-        info: "<a href='http://apple.com'>Apple Inc.</a>",
-        // info: function() {
-        //     var a = document.createElement('a');
-        //         a.href = 'http://apple.com';
-        //         a.innerHTML = 'Apple Inc.';
-        //         a.target = '_blank';
-        //     return a;
-        // },
+        // info: "<a href='http://apple.com'>Apple Inc.</a>",
+        info: function() {
+            var a = document.createElement('a');
+                a.href = 'http://apple.com';
+                a.innerHTML = 'Apple Inc.';
+                a.target = '_blank';
+            return a;
+        },
         events: {
             click: function(e) {
                 map.infowindow_show(e);

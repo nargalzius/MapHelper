@@ -7,7 +7,7 @@
 		"uuidString": "7E519385-D007-48BE-979D-20CFCF5010A8"
 		}
 	],
-"creatorBuild": "25504",
+"creatorBuild": "25704",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
@@ -28,50 +28,62 @@
 	"\/demo\/public_html\/f\/i\/marker_black.png": {
 		"ft": 32768,
 		"iS": 3220,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_black.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/i\/marker_blue.png": {
 		"ft": 32768,
 		"iS": 3617,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_blue.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/i\/marker_green.png": {
 		"ft": 32768,
 		"iS": 3509,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_green.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/i\/marker_orange.png": {
 		"ft": 32768,
 		"iS": 3352,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_orange.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/i\/marker_purple.png": {
 		"ft": 32768,
 		"iS": 3232,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_purple.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/i\/marker_red.png": {
 		"ft": 32768,
 		"iS": 3464,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/f\/i\/marker_red.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/demo\/public_html\/f\/j\/main.js": {
 		"ft": 64,
@@ -95,42 +107,6 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/demo\/public_html\/index.html",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/global.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/global.sassc",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/reset.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/reset.sassc",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/style.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/0769ec5b7e79cd169627ea9723d55e8a382fca9b\/style.sassc",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/global.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/global.sassc",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/reset.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/reset.sassc",
-		"oF": 0
-		},
-	"\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/style.sassc": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/demo\/src\/.sass-cache\/45784fd19f4394da17701eb2d35713f848f90a18\/style.sassc",
 		"oF": 0
 		},
 	"\/demo\/src\/global.sass": {
@@ -253,7 +229,7 @@
 	"alwaysUseExternalServer": 0,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
-	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
+	"autoprefixerBrowserString": "> 1%",
 	"babelAuxiliaryCommentAfter": "",
 	"babelAuxiliaryCommentBefore": "",
 	"babelConfigFileHandlingType": 0,
@@ -918,6 +894,10 @@
 			"active": 1,
 			"optionString": ""
 			},
+		"no-compare-neg-zero": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-cond-assign": {
 			"active": 1,
 			"optionString": "'except-parens'"
@@ -1115,6 +1095,10 @@
 			"optionString": "{'grouping': false, 'allowCall': false }"
 			},
 		"no-mixed-spaces-and-tabs": {
+			"active": 0,
+			"optionString": ""
+			},
+		"no-multi-assign": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -1394,6 +1378,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"nonblock-statement-body-position": {
+			"active": 0,
+			"optionString": "'beside'"
+			},
 		"object-curly-newline": {
 			"active": 0,
 			"optionString": "{'ObjectExpression': {'multiline': true}, 'ObjectPattern': {'multiline': true}}"
@@ -1445,6 +1433,10 @@
 		"prefer-numeric-literals": {
 			"active": 0,
 			"optionString": ""
+			},
+		"prefer-promise-reject-errors": {
+			"active": 0,
+			"optionString": "{'allowEmptyReject': false}"
 			},
 		"prefer-rest-params": {
 			"active": 0,
@@ -1539,6 +1531,10 @@
 			"optionString": ""
 			},
 		"template-curly-spacing": {
+			"active": 0,
+			"optionString": "'never'"
+			},
+		"template-tag-spacing": {
 			"active": 0,
 			"optionString": "'never'"
 			},
@@ -1985,7 +1981,8 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"quality": 100
 		},
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
@@ -2078,7 +2075,9 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"enableLossy": 1,
+		"quality": 100
 		},
 	"languageDefaultsPUG": {
 		"autoOutputAction": 0,
