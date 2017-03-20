@@ -2,7 +2,7 @@
  *	HELPER CLASS FOR GOOGLEMAPS API
  *	https://github.com/nargalzius/MapHelper
  *
- *	3.6
+ *	3.7
  *
  *	author: Carlo J. Santos
  *	email: carlosantos@gmail.com
@@ -17,7 +17,7 @@ if(typeof window.GMapAPILoaded === 'undefined')
 	window.GMapAPILoaded = false;
 
 	var tag = document.createElement('script');
-		tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&signed_in=false&callback=GMapAPIinit';
+		tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&callback=GMapAPIinit';
 
 	if( window.GMapAPIKey ) tag.src += '&key=' + window.GMapAPIKey;
 
@@ -29,7 +29,7 @@ if(typeof window.GMapAPILoaded === 'undefined')
 	var GMapAPIinit = function() {
 	 	window.GMapAPILoaded = true;
 	 	if(typeof window.EventBus != 'undefined') EventBus.dispatch("MAP_LOADED", window);
-	 	if(console && debug) console.log('GoogleMaps API loaded');
+	 	if(window.console && typeof debug !== 'undefined' && debug) console.log('GoogleMaps API loaded');
 	};
 }
 
@@ -633,7 +633,7 @@ MapHelper.prototype = {
 			}
 		}
 	},
-	trace: function (str) { if(console && this.params.debug) {console.log(str);} },
+	trace: function (str) { if(window.console && this.params.debug) {console.log(str);} },
 	get_objecttype: function(obj) {
 		return Object.prototype.toString.call(obj);
 	},
