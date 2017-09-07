@@ -56,7 +56,7 @@ Include the helper script on your document. You **do not** need to include the
 
 ```html
 <head>
-	<script src="helper_gmaps.js"></script>
+    <script src="helper_gmaps.js"></script>
 </head>
 ```
 The script automatically loads the GoogleMaps API script, so there's no need to include that anywhere in your document.
@@ -67,14 +67,14 @@ First is just by instanciating and initializing it :) This _assumes_ you have a 
 
 ```javascript
 var myMap = new MapHelper();
-	myMap.init();
+    myMap.init();
 ```
 
 The second way is to supply the `init` method with the ID of your target container element. This will also overwite `myMap.params.id`
 
 ```javascript
 var myMap = new MapHelper();
-	myMap.init('map-container');
+    myMap.init('map-container');
 ```
 
 These work, they'll both show a map with no problem. But it's worth mentioning that since the GoogleMaps API is being loaded asyncrhonously, the MapHelper class actually "delays" any initialization processes behind the scenes until everything's good to go. So if all you need to do is show a map, then this is fine, as it will show it as soon as it's ready to show it. 
@@ -83,7 +83,7 @@ But if you do something like:
 
 ```javascript
 var myMap = new MapHelper();
-	myMap.init('map-container');
+    myMap.init('map-container');
     myMap.addMarker( {loc:'37.3303991,-122.0323321'} );
 ```
 
@@ -94,8 +94,8 @@ Using a callback as the second parameter avoids this issue - and is the third wa
 ```javascript
 
 var myMap = new MapHelper();
-	myMap.init('map-container', function(){
-    	// do stuff
+    myMap.init('map-container', function(){
+        // do stuff
     });
 ```
 
@@ -103,15 +103,15 @@ And last is the fairly comprehensive one, where you supply an object with parame
 
 ```javascript
 var newParameters = {
-	id: 'other-container',
+    id: 'other-container',
     mapType: 'hybrid',
     zoom: 10,
     address: 'Miami, FL, USA'
 }
 
 var myMap = new MapHelper();
-	myMap.init(newParameters, function(){
-    	// do stuff
+    myMap.init(newParameters, function(){
+        // do stuff
     });
 ```
 
@@ -149,9 +149,9 @@ Setting second argument as boolean to _true_ will set a new `myMap.params.center
 
 ```javascript
 { 
-	x: Number,          // Horizontal offset
-	y: Number,          // Vertical offset
-	replace: Boolean    // Equivalent to setting the second argumen to true
+    x: Number,          // Horizontal offset
+    y: Number,          // Vertical offset
+    replace: Boolean    // Equivalent to setting the second argumen to true
 }
 ```
 
@@ -203,11 +203,11 @@ The _"kitchen sink"_ version of it would be
 
 ```javascript
 {
-	loc: LatLng, 
-	icon: string, 
-	info: String | Object, 
-	evenst: { 
-		click: Function, 
+    loc: LatLng, 
+    icon: string, 
+    info: String | Object, 
+    evenst: { 
+        click: Function, 
         dclick: Function, 
         over: Function, 
         out: Function
@@ -253,13 +253,13 @@ So for example, you want the contents `info` to display a link to Apple Inc., yo
 
 ```javascript
 var marker = {
-	loc: '37.3303991,-122.0323321', 
-	info: "<a href='http://apple.com'>Apple Inc.</a>",
-	events: { 
-    	click: function(m) {
-			map.infowindow_show(m);
-		} 
-	}
+    loc: '37.3303991,-122.0323321', 
+    info: "<a href='http://apple.com'>Apple Inc.</a>",
+    events: { 
+        click: function(m) {
+            map.infowindow_show(m);
+        } 
+    }
 }
 myMap.marker_add(marker);
 ```
@@ -268,18 +268,18 @@ or
 
 ```javascript
 var marker = {
-	loc: '37.3303991,-122.0323321', 
-	info: function() {
-		var a = document.createElement('a');
-			a.href = 'http://apple.com';
-			a.innerHTML = 'Apple Inc.';
-		return a;
-	},
-	events: {
-		click: function(e) {
+    loc: '37.3303991,-122.0323321', 
+    info: function() {
+        var a = document.createElement('a');
+            a.href = 'http://apple.com';
+            a.innerHTML = 'Apple Inc.';
+        return a;
+    },
+    events: {
+        click: function(e) {
             map.infowindow_show(e);
-		}
-	}
+        }
+    }
 }
 myMap.marker_add(marker);
 ```
@@ -289,16 +289,16 @@ or
 ```javascript
 var tObj = document.createElement('a');
     tObj.href = 'http://apple.com';
-	tObj.innerHTML = 'Apple Inc.';
+    tObj.innerHTML = 'Apple Inc.';
     
 var marker = {
-	loc: '37.3303991,-122.0323321', 
-	info: tObj,
-	events: { 
-    	click: function(m) {
-			map.infowindow_show(m);
-		} 
-	}
+    loc: '37.3303991,-122.0323321', 
+    info: tObj,
+    events: { 
+        click: function(m) {
+            map.infowindow_show(m);
+        } 
+    }
 }
 myMap.marker_add(marker);
 ```
