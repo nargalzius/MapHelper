@@ -1,13 +1,13 @@
 /*!
- *	HELPER CLASS FOR GOOGLEMAPS API
- *	https://github.com/nargalzius/MapHelper
+ *  HELPER CLASS FOR GOOGLEMAPS API
+ *  https://github.com/nargalzius/MapHelper
  *
- *	3.9
+ *  3.10
  *
- *	author: Carlo J. Santos
- *	email: carlosantos@gmail.com
+ *  author: Carlo J. Santos
+ *  email: carlosantos@gmail.com
  *
- *	Copyright (c) 2015, All Rights Reserved, www.nargalzius.com
+ *  Copyright (c) 2015, All Rights Reserved, www.nargalzius.com
  */
 
 function MapHelper() {}
@@ -45,6 +45,9 @@ MapHelper.prototype = {
     },
     api: false,
     ready: false,
+    currentZoom: null,
+    currentCenter: null,
+    clickTo: null,
     init(arg, callback) {
 
         // STORE IN CASE WE HAVE AN API LOAD DELAY
@@ -92,7 +95,6 @@ MapHelper.prototype = {
                         this.startmap();
                     }
 
-                    //this.init_cleanup();
                 } else if (this.params.obtrusive) {
                     this.locate_user_gps((e) => {
                         if (e) {
@@ -104,8 +106,6 @@ MapHelper.prototype = {
                             } else {
                                 this.startmap();
                             }
-
-                            //this.init_cleanup();
                         }
                     });
                 } else {
@@ -118,8 +118,6 @@ MapHelper.prototype = {
                         } else {
                             this.startmap();
                         }
-
-                        //this.init_cleanup();
                     });
                 }
             }
@@ -130,12 +128,15 @@ MapHelper.prototype = {
         }
     },
     startmap(callback) {
+
         if (!this.ready) {
             this.evaluate();
             this.proxy = new google.maps.Map(document.getElementById(this.params.id), this.params);
-            this.proxy.addListener('zoom_changed', () => {
-                this.trace('Zoom Level: ' + this.proxy.getZoom());
-            });
+            this.currentZoom = this.proxy.getZoom();
+            this.currentCenter = this.proxy.getCenter();
+
+            this.setListeners();
+
             this.infoWindow = new google.maps.InfoWindow({
                 disableAutoPan: this.IWparams.autopan
             });
@@ -150,6 +151,81 @@ MapHelper.prototype = {
             this.trace('Map already initialized');
         }
     },
+    setListeners() {
+        // SET LISTENERS
+        
+        this.proxy.addListener('maptypeid_changed',  (e) => { this.callback_mapTypeChanged();    });
+        this.proxy.addListener('projection_changed', (e) => { this.callback_projectionChanged(); });
+        this.proxy.addListener('tilt_changed',       (e) => { this.callback_tiltChanged();       });
+        this.proxy.addListener('tilesloaded',        (e) => { this.callback_tilesLoaded();       });
+        this.proxy.addListener('idle',               (e) => { this.callback_mapIdle();           });
+        this.proxy.addListener('resize',             (e) => { this.callback_mapResize();         });
+        this.proxy.addListener('mousemove',          (e) => { this.callback_mapMouseMove();      });
+        this.proxy.addListener('mouseover',          (e) => { this.callback_mapIn();             });
+        this.proxy.addListener('mouseout',           (e) => { this.callback_mapOut();            });
+        this.proxy.addListener('rightclick',         (e) => { this.callback_mapRClick();         });
+        this.proxy.addListener('drag',               (e) => { this.callback_mapDrag();           });
+        this.proxy.addListener('dragstart',          (e) => { this.callback_mapDragStart();      });
+        this.proxy.addListener('dragend', (e) => {
+            this.callback_mapDragEnd();
+
+            // CHECK FOR NEW CENTER
+            if( this.currentCenter !== this.proxy.getCenter() ) {
+                this.currentCenter = this.proxy.getCenter();
+                this.callback_centerChanged();
+            }
+        });
+        this.proxy.addListener('click', (e) => {
+            // GIVE CHANCE FOR DOUBLECLICK
+            this.clickTo = setTimeout( () => {
+                this.callback_mapClick();    
+            }, 300);
+            
+        });
+        this.proxy.addListener('dblclick', (e) => {
+            clearTimeout(this.clickTo);
+            this.callback_mapDClick();
+        });
+        this.proxy.addListener('zoom_changed', (e) => {
+            setTimeout(()=>{
+                if( this.proxy.getZoom() !== this.currentZoom ) {
+
+                    this.trace('Zoom Level: ' + this.proxy.getZoom());
+
+                    if( this.proxy.getZoom() < this.currentZoom ) {
+                        this.callback_zoomOut();
+                        this.callback_zoomChanged();
+                    } else {
+                        this.callback_zoomIn();
+                        this.callback_zoomChanged();
+                    }
+
+                    this.currentZoom = this.proxy.getZoom();
+                }
+            }, 100);
+        });
+    },
+
+    callback_mapClick()          { this.trace('------------------------- callback_mapClick');          },
+    callback_mapDClick()         { this.trace('------------------------- callback_mapDClick');         },
+    callback_mapRClick()         { this.trace('------------------------- callback_mapRClick');         },
+    callback_mapDrag()           { this.trace('------------------------- callback_mapDrag');           },
+    callback_mapDragStart()      { this.trace('------------------------- callback_mapDragStart');      },
+    callback_mapDragEnd()        { this.trace('------------------------- callback_mapDragEnd');        },
+    callback_mapMouseMove()      { this.trace('------------------------- callback_mapMouseMove');      },
+    callback_mapIn()             { this.trace('------------------------- callback_mapIn');             },
+    callback_mapOut()            { this.trace('------------------------- callback_mapOut');            },
+    callback_zoomIn()            { this.trace('------------------------- callback_zoomIn');            },
+    callback_zoomOut()           { this.trace('------------------------- callback_zoomOut');           },
+    callback_zoomChanged()       { this.trace('------------------------- callback_zoomChanged');       },
+    callback_centerChanged()     { this.trace('------------------------- callback_centerChanged');     },
+    callback_projectionChanged() { this.trace('------------------------- callback_projectionChanged'); },
+    callback_mapTypeChanged()    { this.trace('------------------------- callback_mapTypeChanged');    },
+    callback_tiltChanged()       { this.trace('------------------------- callback_tiltChanged');       },
+    callback_tilesLoaded()       { this.trace('------------------------- callback_tilesLoaded');       },
+    callback_mapIdle()           { this.trace('------------------------- callback_mapIdle');           },
+    callback_mapResize()         { this.trace('------------------------- callback_mapResize');         },
+
     evaluate() {
 
         this.set_maptype(this.params.mapType, true);
@@ -288,8 +364,8 @@ MapHelper.prototype = {
                 latlng = err;
 
                 // this.locate_user_general( (e) => {
-                // 	trace(e);
-                // })
+                //     this.trace(e);
+                // });
 
                 this.locate_rigged(callback);
             };
@@ -360,8 +436,8 @@ MapHelper.prototype = {
             let container = document.createElement('div');
             container.className = 'infoWindow';
 
-            //trace(this.get_objecttype(e.info));
-            //trace(typeof e.info);
+            // this.trace(this.get_objecttype(e.info));
+            // this.trace(typeof e.info);
 
             if (content) {
                 container.appendChild(content);
@@ -452,7 +528,7 @@ MapHelper.prototype = {
                 bounds.extend(n);
             });
 
-            this.proxy.setCenter(bounds.getCenter()); //or use custom center
+            this.proxy.setCenter(bounds.getCenter()); // OR USE CUSTOM CENTER
 
             if (bool) {
                 this.proxy.panToBounds(bounds);
@@ -526,9 +602,6 @@ MapHelper.prototype = {
     get_distance(p1, p2, callback) {
 
         if (window['google'] && google.maps) {
-            // function rad(x) {
-            // 	return x * Math.PI / 180;
-            // }
 
             let rad = (x) => {
                 return x * Math.PI / 180;
@@ -537,7 +610,7 @@ MapHelper.prototype = {
             let loc1 = this.get_latlng(p1);
             let loc2 = this.get_latlng(p2);
 
-            let R = 6371000; // earth's mean radius in metres
+            let R = 6371000; // EARTH'S MEAN RADIUS IN METERS
             let M = 0.000621371;
 
             let dLat = rad(loc2.lat() - loc1.lat());
@@ -586,7 +659,7 @@ MapHelper.prototype = {
                     break;
             }
 
-            //trace(res);
+            // this.trace(res);
 
             if (callback) {
                 callback(res);
@@ -633,17 +706,14 @@ if (!(window['google'] && google.maps)) {
     // NO API YET, LOAD MANUALLY
     if (checkDebug) console.log('LOADING MAP API');
     let tag = document.createElement('script');
-    tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&callback=GMapAPIinit';
-
-    if (window.GMapAPIKey) tag.src += '&key=' + window.GMapAPIKey;
+        tag.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&callback=GMapAPIinit';
+    if (window.GMapAPIKey)
+        tag.src += '&key=' + window.GMapAPIKey;
 
     let firstScriptTag = document.getElementsByTagName('script')[0];
-    // setTimeout( () => {
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    // }, 5000);
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     let GMapAPIinit = () => {
-        // MapHelper.prototype.api = true;
         if (typeof window.EventBus != 'undefined') EventBus.dispatch("MAP_LOADED", window);
         if (checkDebug) console.log('GoogleMaps API loaded');
     };
